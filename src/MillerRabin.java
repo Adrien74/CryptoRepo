@@ -26,14 +26,14 @@ public class MillerRabin {
 			return false;
 		}
 		BigInteger m = n;
-		// Ecrire n-1 = 2^k * m, où m est impair
+		// Ecrire n-1 = 2^k * m, ou m est impair
 		m = m.subtract(BigInteger.ONE);
 		int k = 0;
 		while (!m.testBit(0)) {
 			m = m.divide(new BigInteger("2"));
 			k++;
 		}
-		//Choisir aléatoirement a,1 <= a <= n-1
+		//Choisir aleatoirement a,1 <= a <= n-1
 
 		BigInteger a;
 		do {

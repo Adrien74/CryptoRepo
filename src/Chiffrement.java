@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Chiffrement {
 
 	public static void main(String[] args) {
-		Path nom = Paths.get("cd.pub");
+		Path nom = Paths.get(args[0] + ".pub");
 		BigInteger b = BigInteger.ZERO;
 		BigInteger n = BigInteger.ZERO;
 		int taille = 0;
@@ -27,10 +27,19 @@ public class Chiffrement {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		
+		Path messageFile = Paths.get(args[1]);
+		
+		char[] message = new char[(int) messageFile.toFile().length()];
+		try (BufferedReader reader = Files.newBufferedReader(messageFile, StandardCharsets.UTF_8)) {
 
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Veuillez saisir un mot :");
-		String str = sc.nextLine();
+			reader.read(message);
+
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+		String str = new String(message);
 		byte[] bytes = str.getBytes();
 		byte[] bloc = new byte[taille / 8];
 		int tailleBloc = taille / 8;
@@ -38,7 +47,7 @@ public class Chiffrement {
 		int lastBlocSize = 0;
 
 		PrintWriter crypteWriter = null;
-		File messCrypteFile = new File("crypte.txt");
+		File messCrypteFile = new File("crypte" + args[1]);
 		try {
 			crypteWriter = new PrintWriter(messCrypteFile);
 		} catch (FileNotFoundException e) {

@@ -11,7 +11,7 @@ import java.util.List;
 public class Dechiffrement {
 
 	public static void main(String[] args) {
-		Path nom = Paths.get("cd.priv");
+		Path nom = Paths.get(args[0]+".priv");
 		BigInteger a = BigInteger.ZERO;
 		BigInteger n = BigInteger.ZERO;
 		int taille = 0;
@@ -25,7 +25,7 @@ public class Dechiffrement {
 			e1.printStackTrace();
 		}
 		
-		Path cryptedFile = Paths.get("crypte.txt");
+		Path cryptedFile = Paths.get(args[1]);
 		
 		ArrayList<BigInteger> cryptes = new ArrayList<BigInteger>();
 		List<String> allLines = null;

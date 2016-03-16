@@ -1,0 +1,19 @@
+Pour compiler : javac *.java
+
+Utilisation de chaque programme :
+
+java Chiffrement nom fichierContenantMessage.txt
+java Dechiffrement nom messageCrypte.txt
+java Signe nom fichierContenantMessage.txt
+java VerifSigne nom messageSigne messageOriginal.txt
+
+La fonction Chiffrement génère un fichier crypteNomFichierCOntenantMessage, contenant le message cryptée
+La fonction Dechiffrement écrit le message clair dans la console
+La fonction Signe génère un fichier signeNomFichierCOntenantMessage, contenant la signature MD5 cryptée du message
+La fonction VerifSigne est sensé écrire true ou false en fonction de si la signature correspond au message. Malheureusement, le décryptage de la signature ne fonctionne pas.
+
+Exemple avec un fichier message.txt contenant le message, pour une personnge possédant une clé publique "cd.pub" et privée "cd.priv" :
+java Chiffrement cd message.txt : génère un fichier cryptemessage.txt
+java Dechiffrement cd cryptemessage.txt : écrit le contenu du message clair dans la console
+java Signe cd message.txt : génère un fichier signemessage.txt
+java VerifSigne cd signemessage.txt message.txt : est sensé renvoyer vrai, mais renvoi toujours faux car le décryptage de la signature ne fonctionne pas
